@@ -12,10 +12,10 @@ class HandEvaluator {
             hasThreeOfAKind(hand) -> {
                 HandRanking.THREE_OF_A_KIND
             }
-            hasTwoPairMinimum(hand) -> {
+            hasTwoPair(hand) -> {
                 HandRanking.TWO_PAIR
             }
-            hasPairMinimum(hand) -> {
+            hasPair(hand) -> {
                 HandRanking.PAIR
             }
             else -> {
@@ -24,7 +24,7 @@ class HandEvaluator {
         }
     }
 
-    fun hasPairMinimum(hand: Hand): Boolean {
+    fun hasPair(hand: Hand): Boolean {
         return hand.cards.distinctBy { card -> card.value }.size == 4
     }
 
@@ -32,7 +32,7 @@ class HandEvaluator {
         return hand.cards.distinctBy { card -> card.value }.size == 3
     }
 
-    fun hasTwoPairMinimum(hand: Hand): Boolean {
+    fun hasTwoPair(hand: Hand): Boolean {
         return hand.cards.groupingBy { card -> card.value }
                 .eachCount()
                 .entries.stream()
